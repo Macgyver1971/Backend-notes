@@ -1,5 +1,7 @@
 let express = require("express")
 //this command pull express from node packages
+let path = require("path")
+//importing path to use
 
 
 let app = express()
@@ -9,6 +11,9 @@ app.set("view engine","ejs")
 //set ejs to function with express
 //also create a views folder so that express can access file
 
+app.set("views",path.join(__dirname,"/views"))
+//this will allocate view folder globally to prevent 
+//errors
 
 
 app.listen(/*port_number*/ 8080,()=>{
