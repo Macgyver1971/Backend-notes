@@ -1,7 +1,12 @@
 let express = require("express")
 //this command pull express from node packages
+
+
 let app = express()
 //this will allow to use express object features
+
+app.set("view engine","ejs")
+//set ejs to function with express
 
 app.listen(/*port_number*/ 8080,()=>{
   console.log("Server running on post 8080")
