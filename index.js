@@ -7,6 +7,9 @@ let app = express()
 
 app.set("view engine","ejs")
 //set ejs to function with express
+//also create a views folder so that express can access file
+
+
 
 app.listen(/*port_number*/ 8080,()=>{
   console.log("Server running on post 8080")
@@ -20,7 +23,7 @@ app.get(/*route*/"/",(req,res)=>{
 //app.get is a method that send respond on GET request
 //res is an object and it contains many important information EX: req.params
 
-app.get("/:username",(req,res)=>{
+app.get("/find/:username",(req,res)=>{
   let {username} = req.params;
   res.send(`Welcome to ${username}'s page`)
 })
@@ -37,3 +40,20 @@ app.get("/home/search",(req,res)=>{
 //req.query is an object that represent QUERY STRINGS
 //ex: http://localhost:8080/home/search?q=%22arif%22arif
 //here ?q="arif" after search letter is a QUERY STRING
+
+
+app.get("/home",(req,res)=>{
+  res.render("home")
+})
+
+//res.render will search for ejs file in views folder
+//and render it on desired route
+
+
+app.get("/home/users/:name",(req,res)=>{
+  let {name} = req.params;
+  res.render("user",{name})
+})
+
+//res.render can take second argument as an object
+//and we can use it in ejs file
